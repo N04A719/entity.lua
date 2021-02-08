@@ -232,6 +232,7 @@ Returns the model from the `IClientRenderable` of the entity object.
 **syntax:** `ent:get_sequence_activity(sequence)`
 
 `ent` - Player entity object.
+
 `sequence` - Animation layer sequence.
 
 Returns the current activity from the sequence, or `-1` if no activity was found.
@@ -242,6 +243,7 @@ Returns the current activity from the sequence, or `-1` if no activity was found
 **syntax:** `ent:get_anim_overlay(layer)`
 
 `ent` - Player entity object.
+
 `layer` - Animation layer index.
 
 Returns the animation layer of the entity.
