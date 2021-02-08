@@ -1,5 +1,5 @@
 # entity.lua (v1.0)
-The entity object/wrapper library allows you to take an object oriented approach to managing entities.
+The entity object/wrapper library allows you to take an object oriented approach to managing entities along with using other functions.
 
 ## Usage
 ```lua
@@ -61,6 +61,15 @@ Returns entity object of CCSGameRulesProxy instance, or `nil` if none exists.
 Returns entity object of CCSPlayerResource instance, or `nil` if none exists.
 
 ## Methods
+```
+:get_entindex
+```
+**syntax:** `ent:get_entindex()`
+
+`ent` - Entity object.
+
+Returns the ``entindex`` of the entity object.
+
 ```
 :get_classname
 ```
