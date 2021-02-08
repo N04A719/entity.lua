@@ -258,18 +258,18 @@ Returns the animation layer of the entity.
 Returns the animation state of the player.
 
 ## Animation layer
-```
-sequence
-prev_cycle
-weight
-weight_delta_rate
-playback_rate
-cycle
-entity
+```lua
+sequence            -- m_nSequence
+prev_cycle          -- m_flPrevCycle
+weight              -- m_flWeight
+weight_delta_rate   -- m_flWeightDeltaRate
+playback_rate       -- m_flPlaybackRate
+cycle               -- m_flCycle
+entity              -- m_pOwner
 ```
 
 ## Animation state
-```
+```lua
 anim_update_timer
 started_moving_time
 last_move_time
@@ -292,8 +292,8 @@ feet_cycle
 feet_yaw_rate
 duck_amount
 landing_duck_amount
-current_origin[3]
-last_origin[3]
+current_origin[3]   -- USAGE: local x, y, z = current_origin[0], current_origin[1], current_origin[2]
+last_origin[3]      -- USAGE: local x, y, z = last_origin[0], last_origin[1], last_origin[2]
 velocity_x
 velocity_y
 move_direction_1
