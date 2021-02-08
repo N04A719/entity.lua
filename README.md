@@ -83,8 +83,6 @@ Returns the name of the entity's class, or nil on failure.
 
 `array_index` - Optional. If `propname` is an array, the value at this array index will be set.
 
-Returns the name of the entity's class, or nil on failure.
-
 ```
 :get_prop
 ```
@@ -95,3 +93,12 @@ Returns the name of the entity's class, or nil on failure.
 `array_index` - Optional. If `propname` is an array, the value at this array index will be returned.
 
 Returns the value of the property, or nil on failure. For vectors or angles, this returns three values.
+
+```
+:is_enemy
+```
+**syntax:** `ent:is_enemy()`
+
+`ent` - Entity object.
+
+Returns true if the entity is on the other team.
