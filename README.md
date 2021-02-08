@@ -3,7 +3,7 @@ The entity object/wrapper library allows you to take an object oriented approach
 
 ## Usage
 ```lua
-local entity = require 'entity'
+local entity = require 'gamesense/entity'
 
 client.set_event_callback('paint', function()
     local local_player = entity.get_local_player()
