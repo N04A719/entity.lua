@@ -7,6 +7,11 @@ local entity = require 'gamesense/entity'
 
 client.set_event_callback('paint', function()
     local local_player = entity.get_local_player()
+
+    if not local_player:is_alive() then
+        return
+    end
+
     local health = local_player:get_prop('m_iHealth')
 
     renderer.text(20, 20, 255, 255, 255, 255, '+', 0, string.format('Health: %d', health))
