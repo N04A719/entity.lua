@@ -1,4 +1,4 @@
-# entity.lua (v1.0)
+# entity.lua
 The entity object/wrapper library allows you to take an object oriented approach to managing entities along with using other functions.
 
 ## Usage
