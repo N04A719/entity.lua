@@ -1,7 +1,7 @@
 # entity.lua
 This library allows you to take an object oriented approach to managing entities along with using a bunch of new functions.
 
-## Example
+## Usage
 ```lua
 local entity = require 'gamesense/entity'
 
@@ -175,13 +175,7 @@ Returns the `IClientNetworkable` of the entity object.
 `ent` - Entity object.
 
 Returns the `IClientEntity` of the entity object.
-##
-### :get_model
-**syntax:** `ent:get_model()`
 
-`ent` - Player entity object.
-
-Returns the model from the `IClientRenderable` of the entity object.
 ##
 ### :get_sequence_activity
 **syntax:** `ent:get_sequence_activity(sequence)`
