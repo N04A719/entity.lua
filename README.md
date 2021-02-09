@@ -1,5 +1,5 @@
 # entity.lua
-The entity object/wrapper library allows you to take an object oriented approach to managing entities along with using other functions.
+This library allows you to take an object oriented approach to managing entities along with using a bunch of new functions.
 
 ## Usage
 ```lua
@@ -95,7 +95,7 @@ Returns the name of the entity's class, or `nil` on failure.
 
 `value` - The property will be set to this value. For vectors or angles, separate the components by commas.
 
-`array_index` - Optional. If `propname` is an array, the value at this array index will be set.
+`array_index` - Optional. If `propname` is an array, the value at this array index will be set. Additionally, an entity object could be used instead.
 
 ```
 :get_prop
@@ -103,8 +103,10 @@ Returns the name of the entity's class, or `nil` on failure.
 **syntax:** `ent:get_prop(propname, value, array_index)`
 
 `ent` - Entity object.
+
 `propname` - Name of the networked property.
-`array_index` - Optional. If `propname` is an array, the value at this array index will be returned.
+
+`array_index` - Optional. If `propname` is an array, the value at this array index will be returned. Additionally, an entity object could be used instead.
 
 Returns the value of the property, or `nil` on failure. For vectors or angles, this returns three values.
 
@@ -159,6 +161,7 @@ Returns the entity index of the player's active weapon, or `nil` if the player i
 **syntax:** `ent:hitbox_position(hitbox)`
 
 `ent` - Player entity object.
+
 `hitbox` - Either a string of the hitbox name, or an integer index of the hitbox.
 
 Returns world coordinates `x`, `y`, `z`, or `nil` on failure.
