@@ -1,10 +1,9 @@
 # entity.lua
 This library allows you to take an object oriented approach to managing entities along with using a bunch of new functions.
 
-## Usage
+## Example
 ```lua
 local entity = require 'gamesense/entity'
-local ffi = require 'ffi'
 
 client.set_event_callback('paint', function()
     local local_player = entity.get_local_player()
@@ -16,9 +15,6 @@ client.set_event_callback('paint', function()
     local health = local_player:get_prop('m_iHealth')
 
     renderer.text(20, 20, 255, 255, 255, 255, '+', 0, string.format('Health: %d', health))
-
-    -- ffi example
-    local ptr = ffi.cast('void***', local_player:get_client_entity()) -- 'this' pointer example
 end)
 ```
 
