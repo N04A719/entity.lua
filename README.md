@@ -1,4 +1,4 @@
-# entity.lua
+# [entity.lua](https://gamesense.pub/forums/viewtopic.php?id=27529)
 This library allows you to take an object oriented approach to managing entities along with using a bunch of new functions.
 
 ## Usage
