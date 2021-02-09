@@ -4,6 +4,7 @@ This library allows you to take an object oriented approach to managing entities
 ## Usage
 ```lua
 local entity = require 'gamesense/entity'
+local ffi = require 'ffi'
 
 client.set_event_callback('paint', function()
     local local_player = entity.get_local_player()
@@ -15,6 +16,8 @@ client.set_event_callback('paint', function()
     local health = local_player:get_prop('m_iHealth')
 
     renderer.text(20, 20, 255, 255, 255, 255, '+', 0, string.format('Health: %d', health))
+
+    local ptr = ffi.cast('void***', local_player:get_client_entity())
 end)
 ```
 
@@ -24,7 +27,7 @@ end)
 ```
 **syntax:** `entity.new(entindex)`
 
-Creates and returns a new entity object from the specified entindex.
+Creates and returns a new entity object from the specified `entindex`.
 ##
 ```
 .get_local_player
@@ -38,7 +41,7 @@ Returns the entity object for the local player, or `nil` on failure.
 ```
 **syntax:** `entity.get_all(classname)`
 
-`classname` - Optional string that specifies the class name of entities that will be added to the list, for example `"CCSPlayer"`
+`classname` - Optional string that specifies the class name of entities that will be added to the list, for example `'CCSPlayer'`
 
 Returns an array of entity objects. Pass no arguments for all entities.
 ##
@@ -56,14 +59,14 @@ Returns an array of player entity objects. Dormant and dead players will not be 
 ```
 **syntax:** `entity.get_game_rules()`
 
-Returns entity object of CCSGameRulesProxy instance, or `nil` if none exists.
+Returns entity object of `CCSGameRulesProxy` instance, or `nil` if none exists.
 ##
 ```
 .get_player_resource
 ```
 **syntax:** `entity.get_player_resource()`
 
-Returns entity object of CCSPlayerResource instance, or `nil` if none exists.
+Returns entity object of `CCSPlayerResource` instance, or `nil` if none exists.
 
 ## Methods
 ```
@@ -73,7 +76,7 @@ Returns entity object of CCSPlayerResource instance, or `nil` if none exists.
 
 `ent` - Entity object.
 
-Returns the ``entindex`` of the entity object.
+Returns the `entindex` of the entity object.
 ##
 ```
 :get_classname
@@ -117,7 +120,7 @@ Returns the value of the property, or `nil` on failure. For vectors or angles, t
 
 `ent` - Player entity object.
 
-Returns true if the entity is on the other team.
+Returns `true` if the entity is on the other team.
 ##
 ```
 :is_alive
@@ -126,7 +129,7 @@ Returns true if the entity is on the other team.
 
 `ent` - Player entity object.
 
-Returns true if the player is not dead.
+Returns `true` if the player is not dead.
 ##
 ```
 :is_dormant
@@ -135,7 +138,7 @@ Returns true if the player is not dead.
 
 `ent` - Player entity object.
 
-Returns true if the player is dormant.
+Returns `true` if the player is dormant.
 ##
 ```
 :get_player_name
@@ -144,7 +147,7 @@ Returns true if the player is dormant.
 
 `ent` - Player entity object.
 
-Returns the player's name, or the string `"unknown"` on failure.
+Returns the player's name, or the string `'unknown'` on failure.
 ##
 ```
 :get_player_weapon
@@ -153,7 +156,7 @@ Returns the player's name, or the string `"unknown"` on failure.
 
 `ent` - Player entity object.
 
-Returns the entity index of the player's active weapon, or `nil` if the player is not alive, dormant, etc.
+Returns the entity object of the player's active weapon, or `nil` if the player is not alive, dormant, etc.
 ##
 ```
 :hitbox_position
@@ -173,7 +176,7 @@ Returns world coordinates `x`, `y`, `z`, or `nil` on failure.
 
 `ent` - Player entity object.
 
-Returns steamID3, or `nil` on failure.
+Returns `steamID3`, or `nil` on failure.
 ##
 ```
 :get_bounding_box
