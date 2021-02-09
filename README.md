@@ -32,7 +32,7 @@ Returns the entity object for the local player, or `nil` on failure.
 ### .get_all
 **syntax:** `entity.get_all(classname)`
 
-`classname` - Optional string that specifies the class name of entities that will be added to the list, for example `'CCSPlayer'`
+`classname` - Optional string that specifies the class name of entities that will be added to the list, for example `'CCSPlayer'`.
 
 Returns an array of entity objects. Pass no arguments for all entities.
 ##
