@@ -25,14 +25,14 @@ end)
 **syntax:** `entity.new(entindex)`
 
 Creates and returns a new entity object from the specified entindex.
-
+##
 ```
 .get_local_player
 ```
 **syntax:** `entity.get_local_player()`
 
 Returns the entity object for the local player, or `nil` on failure.
-
+##
 ```
 .get_all
 ```
@@ -41,7 +41,7 @@ Returns the entity object for the local player, or `nil` on failure.
 `classname` - Optional string that specifies the class name of entities that will be added to the list, for example `"CCSPlayer"`
 
 Returns an array of entity objects. Pass no arguments for all entities.
-
+##
 ```
 .get_players
 ```
@@ -50,14 +50,14 @@ Returns an array of entity objects. Pass no arguments for all entities.
 `enemies_only` - Optional boolean. If `true` then you and the players on your team will not be added to the list.
 
 Returns an array of player entity objects. Dormant and dead players will not be added to the list.
-
+##
 ```
 .get_game_rules
 ```
 **syntax:** `entity.get_game_rules()`
 
 Returns entity object of CCSGameRulesProxy instance, or `nil` if none exists.
-
+##
 ```
 .get_player_resource
 ```
@@ -74,7 +74,7 @@ Returns entity object of CCSPlayerResource instance, or `nil` if none exists.
 `ent` - Entity object.
 
 Returns the ``entindex`` of the entity object.
-
+##
 ```
 :get_classname
 ```
@@ -83,7 +83,7 @@ Returns the ``entindex`` of the entity object.
 `ent` - Entity object.
 
 Returns the name of the entity's class, or `nil` on failure.
-
+##
 ```
 :set_prop
 ```
@@ -96,7 +96,7 @@ Returns the name of the entity's class, or `nil` on failure.
 `value` - The property will be set to this value. For vectors or angles, separate the components by commas.
 
 `array_index` - Optional. If `propname` is an array, the value at this array index will be set. Additionally, an entity object could be used instead.
-
+##
 ```
 :get_prop
 ```
@@ -109,7 +109,7 @@ Returns the name of the entity's class, or `nil` on failure.
 `array_index` - Optional. If `propname` is an array, the value at this array index will be returned. Additionally, an entity object could be used instead.
 
 Returns the value of the property, or `nil` on failure. For vectors or angles, this returns three values.
-
+##
 ```
 :is_enemy
 ```
@@ -118,7 +118,7 @@ Returns the value of the property, or `nil` on failure. For vectors or angles, t
 `ent` - Player entity object.
 
 Returns true if the entity is on the other team.
-
+##
 ```
 :is_alive
 ```
@@ -127,7 +127,7 @@ Returns true if the entity is on the other team.
 `ent` - Player entity object.
 
 Returns true if the player is not dead.
-
+##
 ```
 :is_dormant
 ```
@@ -136,7 +136,7 @@ Returns true if the player is not dead.
 `ent` - Player entity object.
 
 Returns true if the player is dormant.
-
+##
 ```
 :get_player_name
 ```
@@ -145,7 +145,7 @@ Returns true if the player is dormant.
 `ent` - Player entity object.
 
 Returns the player's name, or the string `"unknown"` on failure.
-
+##
 ```
 :get_player_weapon
 ```
@@ -154,7 +154,7 @@ Returns the player's name, or the string `"unknown"` on failure.
 `ent` - Player entity object.
 
 Returns the entity index of the player's active weapon, or `nil` if the player is not alive, dormant, etc.
-
+##
 ```
 :hitbox_position
 ```
@@ -165,7 +165,7 @@ Returns the entity index of the player's active weapon, or `nil` if the player i
 `hitbox` - Either a string of the hitbox name, or an integer index of the hitbox.
 
 Returns world coordinates `x`, `y`, `z`, or `nil` on failure.
-
+##
 ```
 :get_steam64
 ```
@@ -174,7 +174,7 @@ Returns world coordinates `x`, `y`, `z`, or `nil` on failure.
 `ent` - Player entity object.
 
 Returns steamID3, or `nil` on failure.
-
+##
 ```
 :get_bounding_box
 ```
@@ -183,7 +183,7 @@ Returns steamID3, or `nil` on failure.
 `ent` - Player entity object.
 
 Returns `x1`, `y1`, `x2`, `y2`, `alpha_multiplier`. The contents of `x1`, `y1`, `x2`, `y2` must be ignored when `alpha_multiplier` is zero, which indicates that the bounding box is invalid and should not be drawn.
-
+##
 ```
 :get_origin
 ```
@@ -192,7 +192,7 @@ Returns `x1`, `y1`, `x2`, `y2`, `alpha_multiplier`. The contents of `x1`, `y1`, 
 `ent` - Entity object.
 
 Returns `x`, `y`, `z` world coordinates of the entity's origin, or `nil` if the entity is dormant and dormant ESP information is not available.
-
+##
 ```
 :get_esp_data
 ```
@@ -201,7 +201,7 @@ Returns `x`, `y`, `z` world coordinates of the entity's origin, or `nil` if the 
 `ent` - Player entity object.
 
 Returns a table containing `alpha`, `health`, and `weapon_id`, or `nil` on failure.
-
+##
 ```
 :get_client_networkable
 ```
@@ -210,7 +210,7 @@ Returns a table containing `alpha`, `health`, and `weapon_id`, or `nil` on failu
 `ent` - Entity object.
 
 Returns the `IClientNetworkable` of the entity object.
-
+##
 ```
 :get_client_entity
 ```
@@ -219,7 +219,7 @@ Returns the `IClientNetworkable` of the entity object.
 `ent` - Entity object.
 
 Returns the `IClientEntity` of the entity object.
-
+##
 ```
 :get_model
 ```
@@ -228,7 +228,7 @@ Returns the `IClientEntity` of the entity object.
 `ent` - Player entity object.
 
 Returns the model from the `IClientRenderable` of the entity object.
-
+##
 ```
 :get_sequence_activity
 ```
@@ -239,7 +239,7 @@ Returns the model from the `IClientRenderable` of the entity object.
 `sequence` - Animation layer sequence.
 
 Returns the current activity from the sequence, or `-1` if no activity was found.
-
+##
 ```
 :get_anim_overlay
 ```
@@ -250,7 +250,7 @@ Returns the current activity from the sequence, or `-1` if no activity was found
 `layer` - Animation layer index.
 
 Returns the animation layer of the entity.
-
+##
 ```
 :get_anim_state
 ```
