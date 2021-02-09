@@ -193,7 +193,7 @@ Returns the current activity from the sequence, or `-1` if no activity was found
 
 `layer` - Animation layer index.
 
-Returns the animation layer of the entity.
+Returns the animation layer of the player.
 ##
 ### :get_anim_state
 **syntax:** `ent:get_anim_state()`
