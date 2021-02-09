@@ -95,7 +95,7 @@ Returns the name of the entity's class, or `nil` on failure.
 
 `value` - The property will be set to this value. For vectors or angles, separate the components by commas.
 
-`array_index` - Optional. If `propname` is an array, the value at this array index will be set. Additionally, an entity object could be used instead.
+`array_index` - Optional. If `propname` is an array, the value at this array index will be set. Alternatively, an entity object could be used instead.
 ##
 ```
 :get_prop
@@ -106,7 +106,7 @@ Returns the name of the entity's class, or `nil` on failure.
 
 `propname` - Name of the networked property.
 
-`array_index` - Optional. If `propname` is an array, the value at this array index will be returned. Additionally, an entity object could be used instead.
+`array_index` - Optional. If `propname` is an array, the value at this array index will be returned. Alternatively, an entity object could be used instead.
 
 Returns the value of the property, or `nil` on failure. For vectors or angles, this returns three values.
 ##
