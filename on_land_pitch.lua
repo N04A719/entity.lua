@@ -1,4 +1,4 @@
-local entity = require 'entity'
+local entity = require 'gamesense/entity'
 
 client.set_event_callback('net_update_end', function()
     local local_player = entity.get_local_player()
