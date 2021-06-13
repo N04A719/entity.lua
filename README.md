@@ -215,38 +215,124 @@ entity              -- m_pOwner
 
 ## Weapon info
 ```lua
-consoleName
-iMaxClip1
-MaxClip2
-iDefaultClip1
-iDefaultClip2
-iPrimaryReserveAmmoMax
-iSecondaryReserveAmmoMax
-szWorldModel
-szViewModel
-szDroppedModel
-szHudName
-szWeaponName
-bIsMeleeWeapon
-flWeaponWeight
-iWeaponType
-iWeaponPrice
-iKillAward
-flCycleTime
-flCycleTimeAlt
-bFullAuto
-iDamage
-flArmorRatio
-iBullets
-flPenetration
-flWeaponRange
-flRangeModifier
-flThrowVelocity
-bHasSilencer
-szBulletType
-flMaxSpeed
-flMaxSpeedAlt
-iRecoilSeed
+- addon_location
+- addon_scale
+- armor_ratio
+- attack_movespeed_factor
+- bot_audible_range
+- bullets
+- console_name
+- crosshair_delta_distance
+- crosshair_min_distance
+- cycletime
+- cycletime_alt
+- damage
+- eject_brass_effect
+- flinch_velocity_modifier_large
+- flinch_velocity_modifier_small
+- has_burst_mode
+- has_silencer
+- heat_effect
+- heat_per_shot
+- hide_view_model_zoomed
+- idle_interval
+- idx (item definition index)
+- in_game_price
+- inaccuracy_alt_sound_threshold
+- inaccuracy_crouch
+- inaccuracy_crouch_alt
+- inaccuracy_fire
+- inaccuracy_fire_alt
+- inaccuracy_jump
+- inaccuracy_jump_alt
+- inaccuracy_jump_apex
+- inaccuracy_jump_initial
+- inaccuracy_ladder
+- inaccuracy_ladder_alt
+- inaccuracy_land
+- inaccuracy_land_alt
+- inaccuracy_move
+- inaccuracy_move_alt
+- inaccuracy_reload
+- inaccuracy_stand
+- inaccuracy_stand_alt
+- is_full_auto
+- is_melee_weapon
+- is_revolver
+- item_class
+- item_gear_slot_position
+- item_name
+- itemflag_exhaustible
+- kill_award
+- max_player_speed
+- max_player_speed_alt
+- model_dropped
+- model_player
+- model_right_handed
+- model_world
+- muzzle_flash_effect_1st_person
+- muzzle_flash_effect_1st_person_alt
+- muzzle_flash_effect_3rd_person
+- muzzle_flash_effect_3rd_person_alt
+- name (localized weapon name, for example: "Glock-18")
+- penetration
+- player_animation_extension
+- primary_ammo
+- primary_clip_size
+- primary_default_clip_size
+- primary_reserve_ammo_max
+- range
+- range_modifier
+- raw (returns the raw CCSWeaponInfo_t struct)
+- recoil_angle
+- recoil_angle_alt
+- recoil_angle_variance
+- recoil_angle_variance_alt
+- recoil_magnitude
+- recoil_magnitude_alt
+- recoil_magnitude_variance
+- recoil_magnitude_variance_alt
+- recoil_seed
+- recovery_time_crouch
+- recovery_time_crouch_final
+- recovery_time_stand
+- recovery_time_stand_final
+- recovery_transition_end_bullet
+- recovery_transition_start_bullet
+- schema (raw item schema as returned by panorama, for example: https://pastebin.com/gsE9RvHr)
+- secondary_ammo
+- secondary_clip_size
+- secondary_default_clip_size
+- secondary_reserve_ammo_max
+- sound_burst
+- sound_empty
+- sound_nearlyempty
+- sound_reload
+- sound_single_shot
+- sound_single_shot_accurate
+- sound_special1
+- sound_special2
+- sound_special3
+- spread
+- spread_alt
+- spread_seed
+- throw_velocity
+- time_to_idle
+- tracer_effect
+- tracer_frequency
+- tracer_frequency_alt
+- type (knife, pistol, smg, rifle, shotgun, sniperrifle, machinegun, c4, grenade, stackableitem, fists, breachcharge, bumpmine, tablet, melee, equipment)
+- unzoom_after_shot
+- weapon_type_int
+- weapon_weight
+- zoom_fov_1
+- zoom_fov_2
+- zoom_in_sound
+- zoom_levels
+- zoom_out_sound
+- zoom_time_0
+- zoom_time_1
+- zoom_time_2
 ```
 
 ## Animation state
