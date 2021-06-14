@@ -3,55 +3,23 @@ This library allows you to take an object oriented approach to managing entities
 
 ## Usage
 ```lua
-local entity = require 'gamesense/entity'
+local entity = require "gamesense/entity"
 
-client.set_event_callback('paint', function()
-    local local_player = entity.get_local_player()
+client.set_event_callback("setup_command", function()
+    -- create a local player entity object
+	local local_player = entity.get_local_player()
 
-    if not local_player:is_alive() then
-        return
-    end
+    -- get a net property using a metamethod straight out of the local player
+    local health = local_player:get_prop("m_iHealth")
 
-    local health = local_player:get_prop('m_iHealth')
-
-    renderer.text(20, 20, 255, 255, 255, 255, '+', 0, string.format('Health: %d', health))
+    -- backwards compatibility
+    local health = entity.get_prop(local_player, "m_iHealth")
 end)
 ```
 
 ## Functions
 ### .new
 **syntax:** `entity.new(entindex)`
-
-Creates and returns a new entity object from the specified `entindex`.
-##
-### .get_local_player
-**syntax:** `entity.get_local_player()`
-
-Returns the entity object for the local player, or `nil` on failure.
-##
-### .get_all
-**syntax:** `entity.get_all(classname)`
-
-`classname` - Optional string that specifies the class name of entities that will be added to the list, for example `'CCSPlayer'`.
-
-Returns an array of entity objects. Pass no arguments for all entities.
-##
-### .get_players
-**syntax:** `entity.get_players(enemies_only)`
-
-`enemies_only` - Optional boolean. If `true` then you and the players on your team will not be added to the list.
-
-Returns an array of player entity objects. Dormant and dead players will not be added to the list.
-##
-### .get_game_rules
-**syntax:** `entity.get_game_rules()`
-
-Returns entity object of `CCSGameRulesProxy` instance, or `nil` if none exists.
-##
-### .get_player_resource
-**syntax:** `entity.get_player_resource()`
-
-Returns entity object of `CCSPlayerResource` instance, or `nil` if none exists.
 
 ## Methods
 ### :get_entindex
@@ -60,107 +28,7 @@ Returns entity object of `CCSPlayerResource` instance, or `nil` if none exists.
 `ent` - Entity object.
 
 Returns the `entindex` of the entity object.
-##
-### :get_classname
-**syntax:** `ent:get_classname()`
 
-`ent` - Entity object.
-
-Returns the name of the entity's class, or `nil` on failure.
-##
-### :set_prop
-**syntax:** `ent:set_prop(propname, value, array_index)`
-
-`ent` - Entity object.
-
-`propname` - Name of the networked property.
-
-`value` - The property will be set to this value. For vectors or angles, separate the components by commas.
-
-`array_index` - Optional. If `propname` is an array, the value at this array index will be set. Alternatively, an entity object could be used instead.
-##
-### :get_prop
-**syntax:** `ent:get_prop(propname, value, array_index)`
-
-`ent` - Entity object.
-
-`propname` - Name of the networked property.
-
-`array_index` - Optional. If `propname` is an array, the value at this array index will be returned. Alternatively, an entity object could be used instead.
-
-Returns the value of the property, or `nil` on failure. For vectors or angles, this returns three values.
-##
-### :is_enemy
-**syntax:** `ent:is_enemy()`
-
-`ent` - Player entity object.
-
-Returns `true` if the entity is on the other team.
-##
-### :is_alive
-**syntax:** `ent:is_alive()`
-
-`ent` - Player entity object.
-
-Returns `true` if the player is not dead.
-##
-### :is_dormant
-**syntax:** `ent:is_dormant()`
-
-`ent` - Player entity object.
-
-Returns `true` if the player is dormant.
-##
-### :get_player_name
-**syntax:** `ent:get_player_name()`
-
-`ent` - Player entity object.
-
-Returns the player's name, or the string `'unknown'` on failure.
-##
-### :get_player_weapon
-**syntax:** `ent:get_player_weapon()`
-
-`ent` - Player entity object.
-
-Returns the entity object of the player's active weapon, or `nil` if the player is not alive, dormant, etc.
-##
-### :hitbox_position
-**syntax:** `ent:hitbox_position(hitbox)`
-
-`ent` - Player entity object.
-
-`hitbox` - Either a string of the hitbox name, or an integer index of the hitbox.
-
-Returns world coordinates `x`, `y`, `z`, or `nil` on failure.
-##
-### :get_steam64
-**syntax:** `ent:get_steam64()`
-
-`ent` - Player entity object.
-
-Returns `steamID3`, or `nil` on failure.
-##
-### :get_bounding_box
-**syntax:** `ent:get_bounding_box()`
-
-`ent` - Player entity object.
-
-Returns `x1`, `y1`, `x2`, `y2`, `alpha_multiplier`. The contents of `x1`, `y1`, `x2`, `y2` must be ignored when `alpha_multiplier` is zero, which indicates that the bounding box is invalid and should not be drawn.
-##
-### :get_origin
-**syntax:** `ent:get_origin()`
-
-`ent` - Entity object.
-
-Returns `x`, `y`, `z` world coordinates of the entity's origin, or `nil` if the entity is dormant and dormant ESP information is not available.
-##
-### :get_esp_data
-**syntax:** `ent:get_esp_data()`
-
-`ent` - Player entity object.
-
-Returns a table containing `alpha`, `health`, and `weapon_id`, or `nil` on failure.
 ##
 ### :get_client_networkable
 **syntax:** `ent:get_client_networkable()`
@@ -202,8 +70,16 @@ Returns the animation layer of the player.
 
 Returns the animation state of the player.
 
+##
+### :get_weapon_info
+**syntax:** `ent:get_weapon_info()`
+
+`ent` - Weapon entity object.
+
+Returns the CS:GO weapon data of the weapon.
+
 ## Animation layer
-```lua
+```
 sequence            -- m_nSequence
 prev_cycle          -- m_flPrevCycle
 weight              -- m_flWeight
@@ -214,129 +90,129 @@ entity              -- m_pOwner
 ```
 
 ## Weapon info
-```lua
-- addon_location
-- addon_scale
-- armor_ratio
-- attack_movespeed_factor
-- bot_audible_range
-- bullets
-- console_name
-- crosshair_delta_distance
-- crosshair_min_distance
-- cycletime
-- cycletime_alt
-- damage
-- eject_brass_effect
-- flinch_velocity_modifier_large
-- flinch_velocity_modifier_small
-- has_burst_mode
-- has_silencer
-- heat_effect
-- heat_per_shot
-- hide_view_model_zoomed
-- idle_interval
-- idx (item definition index)
-- in_game_price
-- inaccuracy_alt_sound_threshold
-- inaccuracy_crouch
-- inaccuracy_crouch_alt
-- inaccuracy_fire
-- inaccuracy_fire_alt
-- inaccuracy_jump
-- inaccuracy_jump_alt
-- inaccuracy_jump_apex
-- inaccuracy_jump_initial
-- inaccuracy_ladder
-- inaccuracy_ladder_alt
-- inaccuracy_land
-- inaccuracy_land_alt
-- inaccuracy_move
-- inaccuracy_move_alt
-- inaccuracy_reload
-- inaccuracy_stand
-- inaccuracy_stand_alt
-- is_full_auto
-- is_melee_weapon
-- is_revolver
-- item_class
-- item_gear_slot_position
-- item_name
-- itemflag_exhaustible
-- kill_award
-- max_player_speed
-- max_player_speed_alt
-- model_dropped
-- model_player
-- model_right_handed
-- model_world
-- muzzle_flash_effect_1st_person
-- muzzle_flash_effect_1st_person_alt
-- muzzle_flash_effect_3rd_person
-- muzzle_flash_effect_3rd_person_alt
-- name (localized weapon name, for example: "Glock-18")
-- penetration
-- player_animation_extension
-- primary_ammo
-- primary_clip_size
-- primary_default_clip_size
-- primary_reserve_ammo_max
-- range
-- range_modifier
-- raw (returns the raw CCSWeaponInfo_t struct)
-- recoil_angle
-- recoil_angle_alt
-- recoil_angle_variance
-- recoil_angle_variance_alt
-- recoil_magnitude
-- recoil_magnitude_alt
-- recoil_magnitude_variance
-- recoil_magnitude_variance_alt
-- recoil_seed
-- recovery_time_crouch
-- recovery_time_crouch_final
-- recovery_time_stand
-- recovery_time_stand_final
-- recovery_transition_end_bullet
-- recovery_transition_start_bullet
-- schema (raw item schema as returned by panorama, for example: https://pastebin.com/gsE9RvHr)
-- secondary_ammo
-- secondary_clip_size
-- secondary_default_clip_size
-- secondary_reserve_ammo_max
-- sound_burst
-- sound_empty
-- sound_nearlyempty
-- sound_reload
-- sound_single_shot
-- sound_single_shot_accurate
-- sound_special1
-- sound_special2
-- sound_special3
-- spread
-- spread_alt
-- spread_seed
-- throw_velocity
-- time_to_idle
-- tracer_effect
-- tracer_frequency
-- tracer_frequency_alt
-- type (knife, pistol, smg, rifle, shotgun, sniperrifle, machinegun, c4, grenade, stackableitem, fists, breachcharge, bumpmine, tablet, melee, equipment)
-- unzoom_after_shot
-- weapon_type_int
-- weapon_weight
-- zoom_fov_1
-- zoom_fov_2
-- zoom_in_sound
-- zoom_levels
-- zoom_out_sound
-- zoom_time_0
-- zoom_time_1
-- zoom_time_2
+```
+addon_location
+addon_scale
+armor_ratio
+attack_movespeed_factor
+bot_audible_range
+bullets
+console_name
+crosshair_delta_distance
+crosshair_min_distance
+cycletime
+cycletime_alt
+damage
+eject_brass_effect
+flinch_velocity_modifier_large
+flinch_velocity_modifier_small
+has_burst_mode
+has_silencer
+heat_effect
+heat_per_shot
+hide_view_model_zoomed
+idle_interval
+idx (item definition index)
+in_game_price
+inaccuracy_alt_sound_threshold
+inaccuracy_crouch
+inaccuracy_crouch_alt
+inaccuracy_fire
+inaccuracy_fire_alt
+inaccuracy_jump
+inaccuracy_jump_alt
+inaccuracy_jump_apex
+inaccuracy_jump_initial
+inaccuracy_ladder
+inaccuracy_ladder_alt
+inaccuracy_land
+inaccuracy_land_alt
+inaccuracy_move
+inaccuracy_move_alt
+inaccuracy_reload
+inaccuracy_stand
+inaccuracy_stand_alt
+is_full_auto
+is_melee_weapon
+is_revolver
+item_class
+item_gear_slot_position
+item_name
+itemflag_exhaustible
+kill_award
+max_player_speed
+max_player_speed_alt
+model_dropped
+model_player
+model_right_handed
+model_world
+muzzle_flash_effect_1st_person
+muzzle_flash_effect_1st_person_alt
+muzzle_flash_effect_3rd_person
+muzzle_flash_effect_3rd_person_alt
+name (localized weapon name, for example: "Glock-18")
+penetration
+player_animation_extension
+primary_ammo
+primary_clip_size
+primary_default_clip_size
+primary_reserve_ammo_max
+range
+range_modifier
+raw (returns the raw CCSWeaponInfo_t struct)
+recoil_angle
+recoil_angle_alt
+recoil_angle_variance
+recoil_angle_variance_alt
+recoil_magnitude
+recoil_magnitude_alt
+recoil_magnitude_variance
+recoil_magnitude_variance_alt
+recoil_seed
+recovery_time_crouch
+recovery_time_crouch_final
+recovery_time_stand
+recovery_time_stand_final
+recovery_transition_end_bullet
+recovery_transition_start_bullet
+schema (raw item schema as returned by panorama, for example: https://pastebin.com/gsE9RvHr)
+secondary_ammo
+secondary_clip_size
+secondary_default_clip_size
+secondary_reserve_ammo_max
+sound_burst
+sound_empty
+sound_nearlyempty
+sound_reload
+sound_single_shot
+sound_single_shot_accurate
+sound_special1
+sound_special2
+sound_special3
+spread
+spread_alt
+spread_seed
+throw_velocity
+time_to_idle
+tracer_effect
+tracer_frequency
+tracer_frequency_alt
+type (knife, pistol, smg, rifle, shotgun, sniperrifle, machinegun, c4, grenade, stackableitem, fists, breachcharge, bumpmine, tablet, melee, equipment)
+unzoom_after_shot
+weapon_type_int
+weapon_weight
+zoom_fov_1
+zoom_fov_2
+zoom_in_sound
+zoom_levels
+zoom_out_sound
+zoom_time_0
+zoom_time_1
+zoom_time_2
 ```
 
 ## Animation state
-```lua
+```
 anim_update_timer
 started_moving_time
 last_move_time
