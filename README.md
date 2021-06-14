@@ -19,7 +19,6 @@ end)
 
 ## Functions
 
-##
 ### entity
 **syntax:** `entity(entindex)`
 Creates and returns an entity object from the specified entindex.
