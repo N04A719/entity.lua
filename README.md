@@ -17,9 +17,7 @@ client.set_event_callback("setup_command", function()
 end)
 ```
 
-## Functions
-
-### All Lua API functions that require an entindex
+## Functions (Note: this library has every Lua API function that require an entindex.)
 
 ### entity
 **syntax:** `entity(entindex)`
