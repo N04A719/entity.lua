@@ -21,11 +21,13 @@ end)
 
 ### entity
 **syntax:** `entity(entindex)`
+
 Creates and returns an entity object from the specified entindex.
 
 ##
 ### entity.new
 **syntax:** `entity.new(entindex)`
+
 Creates and returns an entity object from the specified entindex.
 
 ## Methods
