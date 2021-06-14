@@ -19,6 +19,8 @@ end)
 
 ## Functions
 
+### All Lua API functions that require an entindex
+
 ### entity
 **syntax:** `entity(entindex)`
 
