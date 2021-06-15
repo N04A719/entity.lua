@@ -7,7 +7,7 @@ local entity = require "gamesense/entity"
 
 client.set_event_callback("setup_command", function()
     -- create a local player entity object
-	local local_player = entity.get_local_player()
+    local local_player = entity.get_local_player()
 
     -- get a net property using a metamethod straight out of the local player
     local health = local_player:get_prop("m_iHealth")
