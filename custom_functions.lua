@@ -1,3 +1,4 @@
+local ffi = require 'ffi'
 local entity = require 'gamesense/entity'
 
 local native_GetInaccuracy = vtable_thunk(482, 'float(__thiscall*)(void*)')
